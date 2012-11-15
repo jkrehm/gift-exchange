@@ -1,0 +1,36 @@
+body {
+  color: #fff;
+  background-color: #1d1e19;
+  padding: 10px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00b7ff;
+}
+#content {
+  max-width: 300px;
+  margin: 0 auto;
+}
+.portrait {
+  position: relative;
+}
+.portrait img {
+  height: 100px;
+  width: 100px;
+  margin: 13px 25px;
+}
+.portrait .selected {
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-top: 16px solid #008000;
+  left: 32px;
+}
+.title div {
+  text-align: center;
+  width: 100px;
+  display: inline-block;
+  margin: 0 25px;
+}
