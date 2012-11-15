@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Gift Exchange</title>
+	<title>{year} Gift Exchange</title>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 </head>
 <body>
@@ -19,11 +19,8 @@
 				</span>
 
 				<span class="portrait placeholder">
-					{?receiver}
-						<img data-id="{id}" src="/images/portraits/{rphoto}" alt="{rname}" title="{rname}">
-					{:else}
-						<img data-id="{id}" src="/images/portraits/placeholder.png">
-					{/receiver}
+					<!--<img data-id="{id}" src="/images/portraits/{rphoto}" alt="{rname}" title="{rname}">-->
+					<img data-id="{id}" src="/images/portraits/placeholder.png">
 				</span>
 			</div>
 		{/family}
