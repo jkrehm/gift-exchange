@@ -1,4 +1,3 @@
-
 /*
  * POST drawing.
  */
@@ -41,8 +40,6 @@ var draw = {
     };
 
     data.db.all('SELECT * FROM person WHERE id = $giver AND spouse = $receiver', params, function(err, row) {
-      console.log(params);//debug
-      console.log(row);//debug
       if (row.length === 0) {
         draw.storeName(data);
       }

@@ -17,10 +17,10 @@ var app = express();
 app.engine('dust', cons.dust);
 
 app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', process.env.PORT || 9501);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'dust');
-  app.use(express.favicon());
+  app.use(express.favicon(__dirname + '/public/favicon.ico', { maxAge: 2592000000 }));
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
