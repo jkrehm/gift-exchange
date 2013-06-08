@@ -64,11 +64,4 @@ $(document).ready(function() {
 			});
 		});
 	});
-
-
-	// Portrait selected
-	// $('.person img').click(function() {
-	// 	$('.person .selected').remove();
-	// 	$(this).closest('.person').prepend('<span class="selected"></span>');
-	// });
 });
