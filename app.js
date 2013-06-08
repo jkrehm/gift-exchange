@@ -17,7 +17,7 @@ var app = express();
 app.engine('dust', cons.dust);
 
 app.configure(function(){
-  app.set('port', process.env.PORT || 9501);
+  app.set('port', process.env.PORT || 9500);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'dust');
   app.use(express.favicon(__dirname + '/public/favicon.ico', { maxAge: 2592000000 }));

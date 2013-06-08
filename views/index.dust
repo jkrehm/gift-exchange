@@ -20,7 +20,6 @@
 				</span>
 
 				<span class="portrait placeholder">
-					<!--<img data-id="{id}" src="/images/portraits/{rphoto}" alt="{rname}" title="{rname}">-->
 					<img data-id="{id}" src="/images/portraits/placeholder.png">
 				</span>
 			</div>
