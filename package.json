@@ -1,11 +1,13 @@
 {
     "name": "gift-exchange",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "private": true,
     "dependencies": {
         "express": "3.0.2",
-        "jade": "*",
-        "stylus": "*",
-        "sqlite3": "*"
+        "jade": "~0.27.7",
+        "stylus": "~0.30.1",
+        "sqlite3": "~2.1.7",
+        "consolidate": "~0.9.0",
+        "dustjs-linkedin": "1.2.3"
     }
 }
