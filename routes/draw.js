@@ -10,11 +10,26 @@ var draw = {
 
     if (rand != data.giver) {
       data.receiver = rand;
-      draw.nameAvailable(data);
+      draw.nameActive(data);
     }
     else {
       draw.drawName(data);
     }
+  },
+
+  nameActive: function(data) {
+    var params = {
+      $id: data.receiver
+    };
+
+    data.db.all('SELECT * FROM person WHERE id = $id AND active = 1', params, function(err, row) {
+      if (row.length > 0) {
+        draw.nameAvailable(data);
+      }
+      else {
+        draw.drawName(data);
+      }
+    });
   },
 
   nameAvailable: function(data) {
@@ -25,11 +40,29 @@ var draw = {
 
     data.db.all('SELECT * FROM exchange WHERE year = $year AND receiver = $id', params, function(err, row) {
       if (row.length === 0) {
-        draw.isSpouse(data);
+        draw.nonSpouseAvailable(data);
       }
       else {
         draw.drawName(data);
       }
+    });
+  },
+
+  nonSpouseAvailable: function(data) {
+    var params = {
+      $year: draw.year
+    };
+
+    data.db.all('SELECT count(*) as count FROM person WHERE active = 1', function(err, personRow) {
+      data.db.all('SELECT count(*) as count FROM exchange WHERE year = $year', params, function(err, exchangeRow) {
+        // If there's only one person left, don't bother checking if s/he is a spouse
+        if (personRow.count > exchangeRow.count + 1) {
+          draw.isSpouse(data);
+        }
+        else {
+          draw.storeName(data);
+        }
+      });
     });
   },
 
@@ -39,7 +72,7 @@ var draw = {
       $receiver: data.receiver
     };
 
-    data.db.all('SELECT * FROM person WHERE id = $giver AND spouse = $receiver', params, function(err, row) {
+    data.db.all('SELECT * FROM person WHERE id = $giver AND spouse = $receiver AND active = 1', params, function(err, row) {
       if (row.length === 0) {
         draw.storeName(data);
       }
@@ -76,7 +109,7 @@ exports.draw = function(req, res) {
       $year: draw.year
     };
 
-  db.all('SELECT b.* FROM exchange a, person b WHERE a.year = $year AND a.giver = $id AND b.id = a.receiver', params, function(err, row) {
+  db.all('SELECT b.* FROM exchange a, person b WHERE a.year = $year AND a.giver = $id AND b.id = a.receiver AND b.active = 1', params, function(err, row) {
     if (row.length > 0) {
       draw.showPerson(res, row[0]);
     }

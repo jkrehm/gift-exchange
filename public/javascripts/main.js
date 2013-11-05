@@ -38,9 +38,9 @@ $.fn.replaceImg = function(options) {
 
 // Replace Kimmy
 var options = {
-	urlParam: 'kimmy',
-	find: 'kimberly',
-	replace: 'penguin'
+	urlParam : 'kimmy',
+	find     : 'kimberly',
+	replace  : 'penguin'
 };
 $('img[src*="kimberly"]').replaceImg(options);
 
